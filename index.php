@@ -2,7 +2,7 @@
 
 function redirect()
 {
-	header("Location: /teste/view/index.php");
+	header("Location: /View/index.php");
 	exit();
 }
 

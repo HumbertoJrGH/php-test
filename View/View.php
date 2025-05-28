@@ -6,6 +6,6 @@ class View
 {
 	public function __construct()
 	{
-		echo "chamou o construtor PHP";
+		// MÉTODOS BÁSICOS SERÃO ADICIONADOS AQUI.
 	}
 }

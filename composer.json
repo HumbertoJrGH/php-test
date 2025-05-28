@@ -3,7 +3,9 @@
     "description": "teste php",
     "autoload": {
         "psr-4": {
-            "Humbe\\Teste\\": "src/"
+            "Control\\": "Control/",
+            "Model\\": "Model/",
+            "View\\": "View/"
         }
     },
     "require-dev": {
