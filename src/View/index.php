@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cadastro NIS</title>
+</head>
+
+<body>
+	<?php
+	require_once __DIR__ . '/vendor/autoload.php';
+
+	use View\Pages\Form;
+
+	$form = new Form();
+	// $form->render();
+	?>
+</body>
+
+</html>
