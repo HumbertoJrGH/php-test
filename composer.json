@@ -1,6 +1,11 @@
 {
     "name": "humbe/teste",
     "description": "teste php",
+    "scripts": {
+        "test": "php vendor/bin/phpunit --colors=always",
+        "test:coverage": "php vendor/bin/phpunit --coverage-html coverage --colors=always",
+        "test:watch": "php vendor/bin/phpunit --colors=always --watch"
+    },
     "autoload": {
         "psr-4": {
             "Control\\": "Control/",

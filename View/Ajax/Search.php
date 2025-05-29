@@ -23,9 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 						<div><b>NIS:</b> <?= htmlspecialchars($item['nis']) ?></div>
 						<div><b>Nome:</b> <?= htmlspecialchars($item['name']) ?></div>
 					</div>
-					<div>
-						<button class="bg-red-500 text-white py-2 px-4 rounded-md shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">Excluir</button>
-					</div>
 				</div>
 		<?php
 			}
@@ -48,9 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 					<div class="flex flex-col">
 						<div><b>NIS:</b> <?= htmlspecialchars($item['nis']) ?></div>
 						<div><b>Nome:</b> <?= htmlspecialchars($item['name']) ?></div>
-					</div>
-					<div>
-						<button class="bg-red-500 text-white py-2 px-4 rounded-md shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">Excluir</button>
 					</div>
 				</div>
 <?php

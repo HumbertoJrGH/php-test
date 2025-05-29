@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit>
+	<testsuites>
+		<testsuite name="Application Test Suite">
+			<directory>./Tests/</directory>
+		</testsuite>
+	</testsuites>
+	<coverage processUncoveredFiles="true">
+		<include>
+			<directory suffix=".php"></directory>
+		</include>
+		<exclude>
+			<directory suffix=".php">Tests</directory>
+		</exclude>
+	</coverage>
+</phpunit>
