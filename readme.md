@@ -1,4 +1,6 @@
+ # Configuração
  Este projeto foi criado utilizando o PHP 8.2, garanta que o ambiente esteja corretamente configurado para a instalação das dependências e execute o comando `composer install`.
+ ## Banco de Dados
  Faça a configuração do banco de dados num arquivo `.env` na raiz do projeto com as seguintes chaves:
  ```ini
 DB_HOST=localhost
@@ -18,10 +20,14 @@ CREATE TABLE citizen_nis (
    name VARCHAR(255) NOT NULL
 );
  ```
+
+ # Execução
  Execute o código com o comando:
  ```bash
 php -S localhost:{porta}
  ```
+
+ # Recursos
  Utilizando a porta de sua preferência (exemplo: `php -S localhost:8008`).
  Tecnologias utilizadas:
  * JQuery

@@ -27,6 +27,10 @@ class Cidadão
 	public function save($name)
 	{
 		$Model = new CidadãoNIS();
+		if (empty($name) || !is_string($name)) return [
+			'status' => false,
+			'message' => 'Nome inválido.'
+		];
 
 		$content = $Model->getByName($name);
 

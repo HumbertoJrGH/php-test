@@ -55,4 +55,15 @@ class CidadãoTest extends TestCase
 			$this->assertArrayHasKey('message', $result);
 		}
 	}
+
+	public function testSQLInjectionProtection()
+	{
+		$name = "'; DROP TABLE citizen_nis; --";
+		$result = $this->cidadão->save($name);
+		$this->assertArrayHasKey('status', $result);
+		$this->assertFalse($result['status'], 'SQL Injection should not succeed');
+		$this->assertArrayHasKey('message', $result);
+		$this->assertStringContainsString('Erro ao cadastrar cidadão', $result['message']);
+		
+	}
 }
