@@ -14,11 +14,16 @@ class Base
 		$this->db = (new Database())->getConnection();
 	}
 
-	public function select($columns = "*", $conditions = "", $params = [])
+	public function select($columns = "*", $conditions = "", $params = [], $limit = null)
 	{
 		$sql = "SELECT {$columns} FROM {$this->table}";
 
 		if (!empty($conditions)) $sql .= " WHERE {$conditions}";
+
+		if ($limit !== null) {
+			$sql .= " LIMIT :limit";
+			$params[':limit'] = $limit;  // Adiciona o limite como parâmetro
+		}
 
 		$stmt = $this->db->prepare($sql);
 		foreach ($params as $key => $value)
@@ -71,5 +76,20 @@ class Base
 			$stmt->bindValue(":{$key}", $value);
 
 		return $stmt->execute();
+	}
+
+	public function count($conditions, $params)
+	{
+		$sql = "SELECT COUNT(*) FROM {$this->table}";
+		if (!empty($conditions)) $sql .= " WHERE {$conditions}";
+
+		$stmt = $this->db->prepare($sql);
+
+		foreach ($params as $key => $value)
+			$stmt->bindValue(":{$key}", $value);
+
+		if ($stmt->execute())
+			return $stmt->fetchColumn();
+		return null;
 	}
 }

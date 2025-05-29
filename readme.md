@@ -23,3 +23,9 @@ CREATE TABLE citizen_nis (
 php -S localhost:{porta}
  ```
  Utilizando a porta de sua preferência (exemplo: `php -S localhost:8008`).
+ Tecnologias utilizadas:
+ * JQuery
+ * Tailwind
+ * MySQL
+ * DotENV
+ * PHPUnit

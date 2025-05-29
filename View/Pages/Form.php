@@ -16,7 +16,7 @@ class Form extends View
 ?>
 		<div class="">
 			<h1 class="text-2xl font-semibold text-center mb-6">Formulário Cidadão</h1>
-			<div class="space-y-4">
+			<div class="space-y-3">
 				<div>
 					<label for="name" class="block text-sm font-medium text-gray-700">Nome:</label>
 					<input
@@ -35,15 +35,6 @@ class Form extends View
 				<div id="ret-cad"></div>
 			</div>
 		</div>
-
-		<!-- <div class="p-3">
-			<h1>Formulário Cidadão</h1>
-			<div>
-				<label for='name'>Nome:</label>
-				<input type='text' id='name' name='name' required>
-				<button id='submit' onclick="enviar()">Enviar</button>
-			</div>
-		</div> -->
 <?php
 	}
 }

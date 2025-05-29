@@ -8,10 +8,20 @@ class Cidadão
 {
 	public function __construct() {}
 
+	public function count()
+	{
+		return (new CidadãoNIS())->countCitizens();
+	}
 	public function getAll()
 	{
 		$Model = new CidadãoNIS();
 		return $Model->getAll();
+	}
+
+	public function getByNIS($nis)
+	{
+		$Model = new CidadãoNIS();
+		return $Model->getByNIS($nis);
 	}
 
 	public function save($name)

@@ -10,7 +10,12 @@ class CidadãoNIS extends Base
 
 	public function getAll()
 	{
-		return $this->select("*");
+		return $this->select("*", "", [], 5);
+	}
+
+	public function countCitizens($conditions = "")
+	{
+		return $this->count($conditions, []);
 	}
 
 	public function getByNIS($NIS)

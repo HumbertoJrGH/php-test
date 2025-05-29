@@ -11,25 +11,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	if (!empty($nome)) {
 		$ret = $cidadão->save($nome);
-		if ($ret["status"]) {
-?>
+		if ($ret["status"]) { ?>
 			<div class="bg-green-600 p-3 rounded text-center text-white shadow-md">
 				Sucesso! <?= $nome ?> cadastrado com sucesso! <br />
 				Nº NIS: <b><?= $ret['NIS'] ?></b>.
 			</div>
-		<?php
-		} else {
-		?>
+		<?php } else { ?>
 			<div class="bg-yellow-600 p-3 rounded text-center text-white shadow-md">
 				<?= $ret['message'] ?>
 			</div>
-		<?php
-		}
+		<?php }
 	} else {
 		?>
 		<div class="bg-red-600 p-3 rounded text-center text-white shadow-md">
-			Erro: Nome não pode ser vazio!
+			<b>Erro:</b> Nome não pode ser vazio!
 		</div>
-<?php
-	}
+<?php }
 }
