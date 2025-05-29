@@ -1,11 +1,15 @@
 <?php
 
-use System\Model\Base;
+namespace Model;
+
+use Model\Base;
 
 class Citizen extends Base
 {
-	public function __construct()
+	protected $table = 'citizen_nis';
+
+	public function getByID($NIS)
 	{
-		echo "construíndo a classe citizen para controlar os cidadãos cadastrados.";
+		return $this->select("*", "nis = :nis", [':nis' => $NIS]);
 	}
 }

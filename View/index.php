@@ -1,3 +1,12 @@
+<?php
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Model\Citizen;
+use View\Pages\Form;
+
+$form = new Form();
+$Cidadão = new Citizen();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,13 +20,15 @@
 <body>
 	<div class="w-full h-50 bg-red-500"></div>
 	<?php
-	require_once __DIR__ . './../vendor/autoload.php';
-
-	use View\Pages\Form;
-	
-	$form = new Form();
 	$form->render();
+	$cidadão = $Cidadão->getByID(1);
 
+
+	if ($cidadão) {
+		echo "Nome: " . $cidadão[0]['name'] . "\n"; // ou qualquer coluna retornada pela consulta
+	} else {
+		echo "Cidadão não encontrado\n";
+	}
 	?>
 </body>
 
