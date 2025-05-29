@@ -31,7 +31,9 @@ class Base
 	public function insert($data)
 	{
 		$columns = implode(", ", array_keys($data));
-		$placeholders = implode(", ", array_fill(0, count($data), '?'));
+		$placeholders = implode(", ", array_map(function ($key) {
+			return ":$key";  // Placeholders nomeados (ex: :name, :email)
+		}, array_keys($data)));
 
 		$sql = "INSERT INTO {$this->table} ({$columns}) VALUES ({$placeholders})";
 		$stmt = $this->db->prepare($sql);

@@ -11,7 +11,7 @@ try {
 	if (count($version) == 3) {
 		if ($version[0] >= 8)
 			redirect();
-		else echo "deu ruim";
+		else echo "Versão Incompatível";
 	}
 } catch (Exception $e) {
 	echo "Erro: " . $e->getMessage();

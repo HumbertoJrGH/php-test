@@ -13,8 +13,13 @@ class CidadãoNIS extends Base
 		return $this->select("*");
 	}
 
-	public function getByID($NIS)
+	public function getByNIS($NIS)
 	{
 		return $this->select("*", "nis = :nis", [':nis' => $NIS]);
+	}
+
+	public function getByName($name)
+	{
+		return $this->select("*", "name = :name", [':name' => $name]);
 	}
 }

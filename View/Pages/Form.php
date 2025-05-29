@@ -14,12 +14,36 @@ class Form extends View
 	public function render()
 	{
 ?>
-		<h1>Formulário</h1>
-		<form method='post' action='/View/Pages/Save.php'>
-			<label for='name'>Nome:</label>
-			<input type='text' id='name' name='name' required>
-			<button type='submit'>Enviar</button>
-		</form>
+		<div class="">
+			<h1 class="text-2xl font-semibold text-center mb-6">Formulário Cidadão</h1>
+			<div class="space-y-4">
+				<div>
+					<label for="name" class="block text-sm font-medium text-gray-700">Nome:</label>
+					<input
+						type="text"
+						id="name"
+						name="name"
+						required
+						class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+				</div>
+				<button
+					id="submit"
+					onclick="enviar()"
+					class="w-full bg-blue-500 text-white py-2 px-4 rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+					Cadastrar
+				</button>
+				<div id="ret-cad"></div>
+			</div>
+		</div>
+
+		<!-- <div class="p-3">
+			<h1>Formulário Cidadão</h1>
+			<div>
+				<label for='name'>Nome:</label>
+				<input type='text' id='name' name='name' required>
+				<button id='submit' onclick="enviar()">Enviar</button>
+			</div>
+		</div> -->
 <?php
 	}
 }

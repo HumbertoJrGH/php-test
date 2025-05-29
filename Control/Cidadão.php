@@ -13,4 +13,35 @@ class Cidadão
 		$Model = new CidadãoNIS();
 		return $Model->getAll();
 	}
+
+	public function save($name)
+	{
+		$Model = new CidadãoNIS();
+
+		$content = $Model->getByName($name);
+
+		if (count($content) > 0)
+			return [
+				'status' => false,
+				'message' => 'Cidadão já cadastrado.'
+			];
+
+		$NIS = rand(10000000000, 99999999999);
+		$content = $Model->getByNIS($NIS);
+		if (count($content) > 0)
+			return [
+				'status' => false,
+				'message' => 'NIS gerado em duplicidade, tente novamente.'
+			];
+
+		if ($Model->insert(['name' => $name, 'nis' => $NIS]))
+			return [
+				'status' => true,
+				'NIS' => $NIS
+			];
+		else return [
+			'status' => false,
+			'message' => 'Erro ao cadastrar cidadão.'
+		];
+	}
 }
