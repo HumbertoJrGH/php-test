@@ -1,12 +1,17 @@
 <?php
 
-namespace Model;
+namespace Model\Table;
 
 use Model\Base;
 
-class Citizen extends Base
+class CidadãoNIS extends Base
 {
 	protected $table = 'citizen_nis';
+
+	public function getAll()
+	{
+		return $this->select("*");
+	}
 
 	public function getByID($NIS)
 	{

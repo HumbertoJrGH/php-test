@@ -1,11 +1,11 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Model\Citizen;
+use Control\Cidadão;
 use View\Pages\Form;
 
 $form = new Form();
-$Cidadão = new Citizen();
+$Cidadão = new Cidadão();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,11 +21,11 @@ $Cidadão = new Citizen();
 	<div class="w-full h-50 bg-red-500"></div>
 	<?php
 	$form->render();
-	$cidadão = $Cidadão->getByID(1);
+	$cidadãos = $Cidadão->getAll();
 
 
-	if ($cidadão) {
-		echo "Nome: " . $cidadão[0]['name'] . "\n"; // ou qualquer coluna retornada pela consulta
+	if (count($cidadãos) > 0) {
+		echo "Temos " . count($cidadãos) . " cidadãos cadastrados:\n";
 	} else {
 		echo "Cidadão não encontrado\n";
 	}
