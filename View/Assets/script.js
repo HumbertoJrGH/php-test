@@ -21,12 +21,16 @@ function enviar() {
 	})
 }
 
+function voltar() {
+	window.location.href = '/'
+}
+
 function validarNIS() {
 	let nis = $('#nis').val()
 	if (nis.length === 0) {
 		document.getElementById('resultados').innerHTML = '';
 		return;
-	} else if (nis.length > 11) {
+	} else if (nis.length >= 11) {
 		nis = nis.substring(0, 11)
 		$("#nis").val(nis)
 		return

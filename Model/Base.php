@@ -14,6 +14,11 @@ class Base
 		$this->db = (new Database())->getConnection();
 	}
 
+	public function getPDO()
+	{
+		return $this->db;
+	}
+
 	public function select($columns = "*", $conditions = "", $params = [], $limit = null)
 	{
 		$sql = "SELECT {$columns} FROM {$this->table}";

@@ -60,10 +60,14 @@ class CidadãoTest extends TestCase
 	{
 		$name = "'; DROP TABLE citizen_nis; --";
 		$result = $this->cidadão->save($name);
-		$this->assertArrayHasKey('status', $result);
-		$this->assertFalse($result['status'], 'SQL Injection should not succeed');
-		$this->assertArrayHasKey('message', $result);
-		$this->assertStringContainsString('Erro ao cadastrar cidadão', $result['message']);
-		
+
+		$pdo = $this->cidadão->getPDO(); // Implemente um método getPDO() na sua classe para expor a conexão
+		$stmt = $pdo->query("SHOW TABLES LIKE 'citizen_nis'");
+		$table = $stmt->fetch();
+		$this->assertNotFalse($table, 'A tabela citizen_nis deve continuar existindo após tentativa de SQL Injection');
+
+		// 2. Verifica se o dado foi salvo como texto
+		$saved = $this->cidadão->getByName($name); // Implemente getByName() se não existir
+		$this->assertNotEmpty($saved, 'O registro malicioso deve ser salvo como texto, não executado');
 	}
 }
