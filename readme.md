@@ -27,6 +27,12 @@ CREATE TABLE citizen_nis (
 php -S localhost:{porta}
  ```
 
+ # Testes
+ Os testes do backend foram estruturados com PHPUnit e podem ser executados diretamente com o comando:
+ ```bash
+composer test
+ ```
+
  # Recursos
  Utilizando a porta de sua preferência (exemplo: `php -S localhost:8008`).
  Tecnologias utilizadas:
@@ -35,3 +41,4 @@ php -S localhost:{porta}
  * MySQL
  * DotENV
  * PHPUnit
+ O sistema utiliza o PHP Data Objects (PDO) que faz tratativas de segurança para os dados e previne SQL Injection.

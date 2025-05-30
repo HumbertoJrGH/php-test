@@ -51,6 +51,7 @@ class Cidadão
 				'message' => 'Cidadão já cadastrado.'
 			];
 
+		// GERANDO NIS ALEATÓRIO
 		$NIS = rand(10000000000, 99999999999);
 		$content = $this->Model->getByNIS($NIS);
 		if (count($content) > 0)

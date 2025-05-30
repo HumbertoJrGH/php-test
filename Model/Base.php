@@ -21,15 +21,17 @@ class Base
 
 	public function select($columns = "*", $conditions = "", $params = [], $limit = null)
 	{
+		// MONTANDO A QUERY SQL
 		$sql = "SELECT {$columns} FROM {$this->table}";
 
 		if (!empty($conditions)) $sql .= " WHERE {$conditions}";
 
 		if ($limit !== null) {
 			$sql .= " LIMIT :limit";
-			$params[':limit'] = $limit;  // Adiciona o limite como parâmetro
+			$params[':limit'] = $limit;
 		}
 
+		// PREPARANDO EXECUÇÃO COM PDO
 		$stmt = $this->db->prepare($sql);
 		foreach ($params as $key => $value)
 			$stmt->bindValue($key, $value);
@@ -46,6 +48,8 @@ class Base
 		}, array_keys($data)));
 
 		$sql = "INSERT INTO {$this->table} ({$columns}) VALUES ({$placeholders})";
+		
+		// PREPARANDO EXECUÇÃO COM PDO
 		$stmt = $this->db->prepare($sql);
 
 		foreach ($data as $key => $value) $stmt->bindValue(":$key", $value);
@@ -61,6 +65,8 @@ class Base
 		$set = rtrim($set, ", ");
 
 		$sql = "UPDATE {$this->table} SET {$set} WHERE {$conditions}";
+		
+		// PREPARANDO EXECUÇÃO COM PDO
 		$stmt = $this->db->prepare($sql);
 
 		foreach ($data as $key => $value)
@@ -75,6 +81,8 @@ class Base
 	public function delete($conditions, $params)
 	{
 		$sql = "DELETE FROM {$this->table} WHERE $conditions";
+		
+		// PREPARANDO EXECUÇÃO COM PDO
 		$stmt = $this->db->prepare($sql);
 
 		foreach ($params as $key => $value)
@@ -88,6 +96,7 @@ class Base
 		$sql = "SELECT COUNT(*) FROM {$this->table}";
 		if (!empty($conditions)) $sql .= " WHERE {$conditions}";
 
+		// PREPARANDO EXECUÇÃO COM PDO
 		$stmt = $this->db->prepare($sql);
 
 		foreach ($params as $key => $value)

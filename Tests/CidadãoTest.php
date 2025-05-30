@@ -31,7 +31,7 @@ class CidadãoTest extends TestCase
 
 	public function testGetByNIS()
 	{
-		$nis = '12345678901'; // Use a valid NIS for testing
+		$nis = '12345678901';
 		$citizen = $this->cidadão->getByNIS($nis);
 		$this->assertIsArray($citizen);
 		if (count($citizen) > 0) {
@@ -46,28 +46,24 @@ class CidadãoTest extends TestCase
 		$this->assertArrayHasKey('status', $result);
 		if ($result['status']) {
 			$this->assertArrayHasKey('NIS', $result);
-			// Verify that the citizen was saved
+
 			$savedCitizen = $this->cidadão->getByNIS($result['NIS']);
 			$this->assertNotEmpty($savedCitizen);
 			$this->assertEquals($name, $savedCitizen[0]['name']);
-		} else {
-			// If not successful, check the message
-			$this->assertArrayHasKey('message', $result);
-		}
+		} else $this->assertArrayHasKey('message', $result);
 	}
 
 	public function testSQLInjectionProtection()
 	{
 		$name = "'; DROP TABLE citizen_nis; --";
-		$result = $this->cidadão->save($name);
+		$this->cidadão->save($name);
 
-		$pdo = $this->cidadão->getPDO(); // Implemente um método getPDO() na sua classe para expor a conexão
+		$pdo = $this->cidadão->getPDO();
 		$stmt = $pdo->query("SHOW TABLES LIKE 'citizen_nis'");
 		$table = $stmt->fetch();
 		$this->assertNotFalse($table, 'A tabela citizen_nis deve continuar existindo após tentativa de SQL Injection');
 
-		// 2. Verifica se o dado foi salvo como texto
-		$saved = $this->cidadão->getByName($name); // Implemente getByName() se não existir
+		$saved = $this->cidadão->getByName($name);
 		$this->assertNotEmpty($saved, 'O registro malicioso deve ser salvo como texto, não executado');
 	}
 }
